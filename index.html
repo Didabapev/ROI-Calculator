@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ROI Calculator | Smart Finance Tools</title>
+  <meta name="description" content="Free online ROI calculator for businesses and investors. Calculate return on investment instantly.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family:Arial; max-width:600px; margin:auto; padding:20px;">
+  
+<h1>ROI Calculator</h1>
+
+<p>Use this free Return on Investment (ROI) calculator to measure profitability.</p>
+
+<label>Initial Investment ($):</label><br>
+<input type="number" id="investment"><br><br>
+
+<label>Revenue ($):</label><br>
+<input type="number" id="revenue"><br><br>
+
+<button onclick="calculateROI()">Calculate ROI</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calculateROI() {
+  var investment = parseFloat(document.getElementById("investment").value);
+  var revenue = parseFloat(document.getElementById("revenue").value);
+
+  if (investment > 0) {
+    var roi = ((revenue - investment) / investment) * 100;
+    document.getElementById("result").innerHTML = "ROI: " + roi.toFixed(2) + "%";
+  } else {
+    document.getElementById("result").innerHTML = "Enter valid numbers.";
+  }
+}
+</script>
+
+<hr>
+
+<h2>What is ROI?</h2>
+<p>Return on Investment (ROI) measures the profitability of an investment. 
+It is calculated as (Revenue - Investment) / Investment × 100.</p>
+
+</body>
+</html>
