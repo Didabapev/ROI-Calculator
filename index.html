@@ -1,116 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-nav {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #2c7be5;
-  font-weight: bold;
-  margin: 0 10px;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-button {
-  background-color: #2c7be5;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #1a5fd1;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0 15px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-h1 {
-  text-align: center;
-}
-</style>
   <title>ROI Calculator | Smart Finance Tools</title>
   <meta name="description" content="Free online ROI calculator for businesses and investors. Calculate return on investment instantly.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2c7be5;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      background-color: #2c7be5;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #1a5fd1;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: gray;
+    }
+  </style>
 </head>
 
-<body style="font-family:Arial; max-width:600px; margin:auto; padding:20px;">
-  <body>
-    <div class="container">
+<body>
 
-<nav style="margin-bottom:20px;">
-  <a href="/">Home</a> |
-  <a href="/profit-calculator.html">Profit</a> |
+<div class="container">
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/profit-calculator.html">Profit</a>
   <a href="/break-even-calculator.html">Break-even</a>
 </nav>
-<hr>
 
 <h1>ROI Calculator</h1>
 
-<p>Use this free Return on Investment (ROI) calculator to measure profitability.</p>
-</div>
+<p style="text-align:center;">
+  Calculate your Return on Investment (ROI) instantly.
+</p>
 
-</body>
+<label>Initial Investment ($):</label>
+<input type="number" id="investment">
 
-<label>Initial Investment ($):</label><br>
-<input type="number" id="investment"><br><br>
-
-<label>Revenue ($):</label><br>
-<input type="number" id="revenue"><br><br>
+<label>Revenue ($):</label>
+<input type="number" id="revenue">
 
 <button onclick="calculateROI()">Calculate ROI</button>
 
-<h2 id="result"></h2>
+<div class="result" id="result"></div>
+
+<hr>
+
+<h2>What is ROI?</h2>
+<p>
+Return on Investment (ROI) measures the profitability of an investment.
+It is calculated using the formula:
+</p>
+
+<p><strong>ROI = (Revenue − Investment) / Investment × 100</strong></p>
+
+<p>
+ROI helps businesses and investors evaluate financial performance and compare investment opportunities.
+</p>
+
+<footer>
+  © 2026 Smart Finance Tools
+</footer>
+
+</div>
 
 <script>
 function calculateROI() {
   var investment = parseFloat(document.getElementById("investment").value);
   var revenue = parseFloat(document.getElementById("revenue").value);
 
-  if (investment > 0) {
+  if (!isNaN(investment) && investment > 0 && !isNaN(revenue)) {
     var roi = ((revenue - investment) / investment) * 100;
     document.getElementById("result").innerHTML = "ROI: " + roi.toFixed(2) + "%";
   } else {
-    document.getElementById("result").innerHTML = "Enter valid numbers.";
+    document.getElementById("result").innerHTML = "Please enter valid numbers.";
   }
 }
 </script>
-
-<hr>
-
-<h2>What is ROI?</h2>
-<p>Return on Investment (ROI) measures the profitability of an investment. 
-It is calculated as (Revenue - Investment) / Investment × 100.</p>
 
 </body>
 </html>
