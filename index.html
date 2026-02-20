@@ -1,92 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ROI Calculator | Smart Finance Tools</title>
-  <meta name="description" content="Free online ROI calculator for businesses and investors. Calculate return on investment instantly.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>ROI Calculator | Smart Finance Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header">
-  <div class="logo">Smart Finance Tools</div>
-  <nav>
-    <a href="/">Home</a>
-    <a href="profit-calculator.html">Profit</a>
-    <a href="break-even-calculator.html">Break-even</a>
-    <a href="loan-calculator.html">Loan</a>
-    <a href="about.html">About</a>
-  </nav>
+<header>
+    <div class="container nav">
+        <div class="logo">Smart Finance Tools</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Profit</a>
+            <a href="#">Break-even</a>
+            <a href="#">Loan</a>
+            <a href="#">About</a>
+        </nav>
+    </div>
 </header>
 
 <section class="hero">
-  <h1>Free ROI Calculator for Businesses</h1>
-  <p>Instantly calculate your Return on Investment and evaluate profitability.</p>
+    <h1>Free ROI Calculator for Businesses</h1>
+    <p>Instantly calculate your Return on Investment and evaluate profitability.</p>
 </section>
 
-<div class="container">
+<section class="calculator">
+    <div class="card">
+        <label>Initial Investment ($)</label>
+        <input type="number" id="investment" placeholder="Enter investment amount">
 
-  <label>Initial Investment ($):</label>
-  <input type="number" id="investment">
+        <label>Revenue ($)</label>
+        <input type="number" id="revenue" placeholder="Enter revenue amount">
 
-  <label>Revenue ($):</label>
-  <input type="number" id="revenue">
+        <button onclick="calculateROI()">Calculate ROI</button>
 
-  <button onclick="calculateROI()">Calculate ROI</button>
+        <div id="result"></div>
+    </div>
+</section>
 
-  <div class="result" id="result"></div>
-
-  <hr>
-
-  <h2>What is ROI?</h2>
-  <p>
-    Return on Investment (ROI) measures the profitability of an investment.
-  </p>
-
-  <p class="formula">
-    ROI = (Revenue − Investment) / Investment × 100
-  </p>
-
-  <p>
-    ROI helps businesses and investors evaluate financial performance and compare opportunities.
-  </p>
-
-</div>
-
-<section class="features">
-  <div class="feature-box">
-    <h3>Fast & Simple</h3>
-    <p>No registration required. Get instant results.</p>
-  </div>
-  <div class="feature-box">
-    <h3>100% Free</h3>
-    <p>All calculators are completely free to use.</p>
-  </div>
-  <div class="feature-box">
-    <h3>Business Focused</h3>
-    <p>Designed for entrepreneurs and investors.</p>
-  </div>
+<section class="info">
+    <div class="container">
+        <h2>What is ROI?</h2>
+        <p>
+            Return on Investment (ROI) measures the profitability of an investment.
+        </p>
+        <p class="formula">
+            ROI = (Revenue − Investment) / Investment × 100
+        </p>
+        <p>
+            ROI helps businesses and investors evaluate financial performance and compare opportunities.
+        </p>
+    </div>
 </section>
 
 <footer>
-  © 2026 Smart Finance Tools
+    <p>© 2026 Smart Finance Tools | Free Business Calculators</p>
 </footer>
 
-<script>
-function calculateROI() {
-  var investment = parseFloat(document.getElementById("investment").value);
-  var revenue = parseFloat(document.getElementById("revenue").value);
-
-  if (!isNaN(investment) && investment > 0 && !isNaN(revenue)) {
-    var roi = ((revenue - investment) / investment) * 100;
-    document.getElementById("result").innerHTML = "ROI: " + roi.toFixed(2) + "%";
-  } else {
-    document.getElementById("result").innerHTML = "Please enter valid numbers.";
-  }
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
