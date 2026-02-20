@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Calculator – Monthly Payment Calculator</title>
+<meta name="description" content="Free loan calculator. Calculate monthly loan payments with interest instantly.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>Loan Calculator</h1>
+</header>
+
+<div class="calculator">
+<label>Loan Amount ($)</label>
+<input type="number" id="loanAmount">
+
+<label>Interest Rate (%)</label>
+<input type="number" id="interestRate">
+
+<label>Loan Term (Years)</label>
+<input type="number" id="loanYears">
+
+<button onclick="calculateLoan()">Calculate</button>
+
+<h2 id="loanResult"></h2>
+</div>
+
+<script>
+function calculateLoan() {
+let P = parseFloat(document.getElementById('loanAmount').value);
+let r = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+let n = parseFloat(document.getElementById('loanYears').value) * 12;
+
+if (!P || !r || !n) {
+document.getElementById('loanResult').innerText = "Please enter valid numbers.";
+return;
+}
+
+let payment = (P * r) / (1 - Math.pow(1 + r, -n));
+document.getElementById('loanResult').innerText = "Monthly Payment: $" + payment.toFixed(2);
+}
+</script>
+
+</body>
+</html>
 
