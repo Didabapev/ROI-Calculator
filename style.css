@@ -170,3 +170,23 @@ a:hover {
 .seo-text li {
     margin-bottom: 8px;
 }
+.faq {
+    max-width: 900px;
+    margin: 80px auto;
+    background: rgba(255,255,255,0.03);
+    padding: 40px;
+    border-radius: 16px;
+}
+
+.faq h2 {
+    margin-bottom: 25px;
+}
+
+.faq h3 {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.faq p {
+    color: #cbd5e1;
+}
