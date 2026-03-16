@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free QR Code Generator – Create High-Quality QR Codes Online 2026</title>
+    <meta name="description" content="Generate custom QR codes for URLs, text, or Wi-Fi instantly. Free, secure, and no registration required. High-quality QR code maker.">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 20px; color: var(--primary); }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        input:focus { border-color: var(--primary); outline: none; }
+
+        #qrcode {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn-download {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover { opacity: 0.9; transform: scale(0.98); }
+
+        .seo-text { margin-top: 30px; font-size: 0.85rem; color: #94a3b8; text-align: left; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>QR Code Generator</h1>
+    <input type="text" id="text" placeholder="Enter URL or text here..." oninput="generateQR()">
+    
+    <div id="qrcode"></div>
+
+    <button class="btn-download" onclick="downloadQR()">Download QR Code (PNG)</button>
+
+    <div class="seo-text">
+        <p><strong>Private & Fast:</strong> Our QR maker works entirely in your browser. Your links and data are never sent to our servers. Perfect for business cards, website links, and social media.</p>
+    </div>
+</div>
+
+<script>
+    const qrContainer = document.getElementById("qrcode");
+    const qrcode = new QRCode(qrContainer, {
+        text: "https://didabapev.github.io/",
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+    });
+
+    function generateQR() {
+        const text = document.getElementById("text").value;
+        if (text.trim() === "") {
+            qrcode.clear();
+        } else {
+            qrcode.makeCode(text);
+        }
+    }
+
+    function downloadQR() {
+        const img = qrContainer.querySelector("img");
+        if (img) {
+            const link = document.createElement("a");
+            link.href = img.src;
+            link.download = "qrcode.png";
+            link.click();
+        }
+    }
+</script>
+</body>
+</html>
