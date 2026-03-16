@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Mortgage Calculator – Estimate Monthly Payments 2026</title>
+    <meta name="description" content="Calculate your mortgage payments, interest rates, and loan terms with our free online calculator. Plan your home purchase today.">
+    
+    <style>
+        :root {
+            --primary: #10b981; /* Emerald */
+            --primary-hover: #059669;
+            --bg: #f0fdf4;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #d1fae5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.8rem; color: #064e3b; text-align: center; margin-bottom: 25px; }
+
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            display: none;
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .res-main { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
+        .res-sub { color: #64748b; font-size: 0.9rem; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Mortgage Calculator</h1>
+    
+    <div class="input-grid">
+        <div style="grid-column: span 2;">
+            <label>Home Price ($)</label>
+            <input type="number" id="homePrice" placeholder="300000">
+        </div>
+        <div>
+            <label>Down Payment ($)</label>
+            <input type="number" id="downPayment" placeholder="60000">
+        </div>
+        <div>
+            <label>Loan Term (Years)</label>
+            <input type="number" id="loanTerm" placeholder="30">
+        </div>
+        <div style="grid-column: span 2;">
+            <label>Interest Rate (%)</label>
+            <input type="number" id="interestRate" placeholder="6.5" step="0.1">
+        </div>
+    </div>
+
+    <button class="btn" onclick="calculateMortgage()">Calculate Payment</button>
+
+    <div id="resultBox" class="result-box">
+        <div class="res-sub">Monthly Payment:</div>
+        <div class="res-main" id="monthlyPayment">$0.00</div>
+        <div class="res-sub" id="totalDetails">Total Payment: $0.00</div>
+    </div>
+</div>
+
+<script>
+    function calculateMortgage() {
+        const price = parseFloat(document.getElementById('homePrice').value);
+        const down = parseFloat(document.getElementById('downPayment').value) || 0;
+        const term = parseFloat(document.getElementById('loanTerm').value) * 12;
+        const rate = (parseFloat(document.getElementById('interestRate').value) / 100) / 12;
+
+        if (price > down && term > 0 && rate > 0) {
+            const principal = price - down;
+            const x = Math.pow(1 + rate, term);
+            const monthly = (principal * x * rate) / (x - 1);
+            const total = monthly * term;
+
+            document.getElementById('monthlyPayment').innerText = '$' + monthly.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('totalDetails').innerText = 'Total with Interest: $' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resultBox').style.display = 'block';
+        } else {
+            alert("Please check your numbers. Home price must be higher than down payment.");
+        }
+    }
+</script>
+</body>
+</html>
