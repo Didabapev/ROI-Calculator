@@ -3,217 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Tools Hub – Free Web Utilities by Didabapev</title>
-    <meta name="description" content="Free Online Tools Hub: Professional Invoice Generator, BMI Calculator, Secure Password Generator, and Business Calculators. Fast, secure, and private.">
-    <div style="text-align: center; margin: 40px 0;">
-    <a href="blog.html" style="padding: 12px 24px; background: #2c7be5; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">Visit Our Blog</a>
-</div>
+    <title>Web Tools Hub – 19+ Free Online Calculators & Generators</title>
+    <meta name="description" content="Access 19+ free online tools including Finance, Business, Health, and Productivity calculators. Fast, private, and easy to use.">
+    
     <style>
         :root {
-            --primary: #4f46e5;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
             --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
         }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         header {
-            background: white;
-            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
-            border-bottom: 1px solid #e2e8f0;
         }
 
-        header h1 { font-size: 2.5rem; margin: 0; color: #0f172a; }
-        header p { font-size: 1.1rem; color: var(--text-light); margin-top: 10px; }
+        .hero h1 { font-size: 3rem; margin: 0; letter-spacing: -0.02em; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; margin-top: 15px; }
 
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .container { max-width: 1200px; margin: -40px auto 60px; padding: 0 20px; }
+
+        .category-section { margin-top: 60px; }
+        .category-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            margin-bottom: 25px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .tool-card {
-            background: var(--card);
-            padding: 30px;
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            padding: 24px;
             border-radius: 20px;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
             border-color: var(--primary);
         }
 
-        .tool-card h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
-
-        .tool-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            flex-grow: 1;
-        }
+        .icon { font-size: 2rem; margin-bottom: 15px; }
+        .tool-card h3 { margin: 0 0 10px 0; font-size: 1.25rem; color: var(--text-main); }
+        .tool-card p { margin: 0; font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; }
 
         .badge {
-            display: inline-block;
-            background: #eef2ff;
-            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
             padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            border-radius: 99px;
+            background: #eff6ff;
+            color: var(--primary);
+            align-self: flex-start;
             margin-bottom: 15px;
-            width: fit-content;
         }
 
-        footer {
-            text-align: center;
+        .blog-cta {
+            background: white;
+            margin-top: 80px;
             padding: 40px;
-            margin-top: 60px;
-            color: var(--text-light);
-            border-top: 1px solid #e2e8f0;
+            border-radius: 24px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
         }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
+        footer { text-align: center; padding: 60px 20px; color: var(--text-muted); border-top: 1px solid #e2e8f0; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .container { margin-top: -20px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Web Tools Hub</h1>
-    <p>Fast, Secure, and Free Online Utilities for Everyday Tasks.</p>
+    <div class="hero">
+        <h1>Web Tools Hub</h1>
+        <p>Simple, fast, and secure tools for everyday tasks.</p>
+    </div>
 </header>
 
 <div class="container">
-    <div class="tools-grid">
-        <a href="https://didabapev.github.io/qr-generator.html" class="tool-card">
-    <span class="badge">Utility</span>
-    <h2>QR Code Generator</h2>
-    <p>Create instant QR codes for links, text, or Wi-Fi. Free download in high-quality PNG format.</p>
-</a>
-        
-        <a href="https://didabapev.github.io/invoice-generator/" class="tool-card">
-            <span class="badge">Business</span>
-            <h2>Invoice Generator</h2>
-            <p>Create professional PDF invoices instantly without registration. Secure and private.</p>
-        </a>
-
-        <a href="https://didabapev.github.io/bmi-calculator/" class="tool-card">
-            <span class="badge">Health</span>
-            <h2>BMI Calculator</h2>
-            <p>Calculate your Body Mass Index and track your health status with our simple tool.</p>
-        </a>
-
-        <a href="https://didabapev.github.io/Free-online-password-generator-and-PDF-generator/" class="tool-card">
-            <span class="badge">Security</span>
-            <h2>Password Generator</h2>
-            <p>Generate strong, unhackable passwords to keep your online accounts safe.</p>
-        </a>
-
-        <a href="https://didabapev.github.io/resume-builder/" class="tool-card">
-            <span class="badge">Career</span>
-            <h2>Resume Builder</h2>
-            <p>Build a professional resume in minutes and download it as a ready-to-print file.</p>
-        </a>
-<a href="https://didabapev.github.io/loan-calculator.html" class="tool-card">
-    <span class="badge">Finance</span>
-    <h2>Loan Calculator</h2>
-    <p>Estimate your monthly payments and total interest. Plan your loans with our precise financial tool.</p>
-</a>
-        <a href="https://didabapev.github.io/calorie-calculator.html" class="tool-card">
-    <span class="badge">Health</span>
-    <h2>Calorie Calculator</h2>
-    <p>Determine your daily caloric needs based on your activity level and goals. Stay fit and healthy.</p>
-</a>
-        <a href="https://didabapev.github.io/unit-converter.html" class="tool-card">
-    <span class="badge">Utility</span>
-    <h2>Unit Converter</h2>
-    <p>Convert length, weight, and temperature instantly. Supports both metric and imperial units.</p>
-</a>
-        <a href="https://didabapev.github.io/word-counter.html" class="tool-card">
-    <span class="badge">Writing</span>
-    <h2>Word Counter</h2>
-    <p>Analyze your text length instantly. Count words, characters, and estimate reading time for your content.</p>
-</a>
-        <a href="https://didabapev.github.io/break-even-calculator.html" class="tool-card">
-        <span class="badge">Business</span>
-        <h2>Break-even Calculator</h2>
-        <p>Find out how many units you need to sell to cover your costs and start making profit.</p>
-    </a>
-        <a href="https://didabapev.github.io/investment-calculator.html" class="tool-card">
-    <span class="badge">Finance</span>
-    <h2>Investment Calculator</h2>
-    <p>Project your long-term savings growth using the power of compound interest.</p>
-</a>
-        <a href="https://didabapev.github.io/tip-calculator.html" class="tool-card">
-    <span class="badge">Utility</span>
-    <h2>Tip Calculator</h2>
-    <p>Quickly calculate tips and split the bill with friends. Perfect for dining out and travel.</p>
-</a>
-        <a href="https://didabapev.github.io/profit-calculator.html" class="tool-card">
-    <span class="badge">Business</span>
-    <h2>Profit Calculator</h2>
-    <p>Track your business earnings. Calculate net profit by subtracting total costs from revenue.</p>
-</a>
-        <a href="https://didabapev.github.io/roi-calculator.html" class="tool-card">
-    <span class="badge">Finance</span>
-    <h2>ROI Calculator</h2>
-    <p>Measure your investment efficiency and profitability. Get fast and accurate return percentages.</p>
-</a>
-        <a href="https://didabapev.github.io/vat-calculator.html" class="tool-card">
-    <span class="badge">Business</span>
-    <h2>VAT Calculator</h2>
-    <p>Add or remove value-added tax instantly. Support for multiple rates and quick calculations.</p>
-</a>
-        <a href="https://didabapev.github.io/mortgage-calculator.html" class="tool-card">
-    <span class="badge">Finance</span>
-    <h2>Mortgage Calculator</h2>
-    <p>Plan your dream home purchase. Estimate monthly mortgage payments and total interest easily.</p>
-</a>
-        <a href="https://didabapev.github.io/salary-calculator.html" class="tool-card">
-    <span class="badge">Career</span>
-    <h2>Salary Calculator</h2>
-    <p>Estimate your take-home pay after taxes. Plan your budget based on your net income.</p>
-</a>
-        <a href="https://didabapev.github.io/random-number.html" class="tool-card">
-    <span class="badge">Utility</span>
-    <h2>Random Number</h2>
-    <p>Generate a truly random number within any range. Perfect for giveaways, contests, and games.</p>
-</a>
-        <a href="https://didabapev.github.io/penalty-calculator.html" class="tool-card">
-    <span class="badge">Business</span>
-    <h2>Penalty Calculator</h2>
-    <p>Calculate interest on late payments. Perfect for business contracts and personal debt management.</p>
-</a>
+    
+    <div class="category-section">
+        <div class="category-title">💰 Finance & Business</div>
+        <div class="tools-grid">
+            <a href="loan-calculator.html" class="tool-card">
+                <span class="badge">Finance</span>
+                <div class="icon">🏦</div>
+                <h3>Loan Calculator</h3>
+                <p>Calculate monthly payments and total interest for any loan.</p>
+            </a>
+            <a href="mortgage-calculator.html" class="tool-card">
+                <span class="badge">Finance</span>
+                <div class="icon">🏠</div>
+                <h3>Mortgage Calc</h3>
+                <p>Plan your home purchase with detailed payment breakdowns.</p>
+            </a>
+            <a href="roi-calculator.html" class="tool-card">
+                <span class="badge">Business</span>
+                <div class="icon">📈</div>
+                <h3>ROI Calculator</h3>
+                <p>Measure the return on investment for your projects.</p>
+            </a>
+            <a href="profit-calculator.html" class="tool-card">
+                <span class="badge">Business</span>
+                <div class="icon">💵</div>
+                <h3>Profit Calculator</h3>
+                <p>Track net profit by analyzing revenue and expenses.</p>
+            </a>
+            <a href="break-even-calculator.html" class="tool-card">
+                <span class="badge">Business</span>
+                <div class="icon">⚖️</div>
+                <h3>Break-even</h3>
+                <p>Find the point where your business starts making money.</p>
+            </a>
+            <a href="vat-calculator.html" class="tool-card">
+                <span class="badge">Tax</span>
+                <div class="icon">📜</div>
+                <h3>VAT Calculator</h3>
+                <p>Add or remove VAT from any amount instantly.</p>
+            </a>
+            <a href="penalty-calculator.html" class="tool-card">
+                <span class="badge">Legal</span>
+                <div class="icon">⚠️</div>
+                <h3>Penalty Calc</h3>
+                <p>Calculate late payment interest and penalties.</p>
+            </a>
+            <a href="investment-calculator.html" class="tool-card">
+                <span class="badge">Finance</span>
+                <div class="icon">💎</div>
+                <h3>Investment</h3>
+                <p>See how compound interest grows your wealth over time.</p>
+            </a>
+            <a href="https://didabapev.github.io/invoice-generator/" class="tool-card">
+                <span class="badge">Business</span>
+                <div class="icon">📑</div>
+                <h3>Invoice Gen</h3>
+                <p>Create professional PDF invoices in seconds.</p>
+            </a>
+        </div>
     </div>
+
+    <div class="category-section">
+        <div class="category-title">🛠️ Useful Utilities</div>
+        <div class="tools-grid">
+            <a href="qr-generator.html" class="tool-card">
+                <span class="badge">Utility</span>
+                <div class="icon">📱</div>
+                <h3>QR Generator</h3>
+                <p>Generate custom QR codes for links, text, or Wi-Fi.</p>
+            </a>
+            <a href="unit-converter.html" class="tool-card">
+                <span class="badge">Utility</span>
+                <div class="icon">🔄</div>
+                <h3>Unit Converter</h3>
+                <p>Convert length, weight, and temperature instantly.</p>
+            </a>
+            <a href="word-counter.html" class="tool-card">
+                <span class="badge">Writing</span>
+                <div class="icon">✍️</div>
+                <h3>Word Counter</h3>
+                <p>Count words, characters, and reading time.</p>
+            </a>
+            <a href="random-number.html" class="tool-card">
+                <span class="badge">Utility</span>
+                <div class="icon">🎲</div>
+                <h3>Random Picker</h3>
+                <p>Generate fair random numbers for giveaways or games.</p>
+            </a>
+            <a href="tip-calculator.html" class="tool-card">
+                <span class="badge">Utility</span>
+                <div class="icon">🍴</div>
+                <h3>Tip Calculator</h3>
+                <p>Quickly split bills and calculate tips with friends.</p>
+            </a>
+            <a href="https://didabapev.github.io/Free-online-password-generator-and-PDF-generator/" class="tool-card">
+                <span class="badge">Security</span>
+                <div class="icon">🔒</div>
+                <h3>Password Gen</h3>
+                <p>Create strong, secure passwords for your accounts.</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <div class="category-title">🌱 Health & Career</div>
+        <div class="tools-grid">
+            <a href="https://didabapev.github.io/bmi-calculator/" class="tool-card">
+                <span class="badge">Health</span>
+                <div class="icon">⚖️</div>
+                <h3>BMI Calculator</h3>
+                <p>Check your Body Mass Index and health status.</p>
+            </a>
+            <a href="calorie-calculator.html" class="tool-card">
+                <span class="badge">Health</span>
+                <div class="icon">🍎</div>
+                <h3>Calorie Calc</h3>
+                <p>Calculate your daily calories for weight goals.</p>
+            </a>
+            <a href="salary-calculator.html" class="tool-card">
+                <span class="badge">Career</span>
+                <div class="icon">💼</div>
+                <h3>Salary Calc</h3>
+                <p>Estimate your take-home pay after taxes.</p>
+            </a>
+            <a href="https://didabapev.github.io/resume-builder/" class="tool-card">
+                <span class="badge">Career</span>
+                <div class="icon">📄</div>
+                <h3>Resume Builder</h3>
+                <p>Build a professional CV with our easy template.</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="blog-cta">
+        <h2>Expert Insights & Guides</h2>
+        <p>Learn how to manage your finances, boost productivity, and improve your health.</p>
+        <a href="blog.html" style="display: inline-block; background: var(--primary); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-top: 20px;">Read Our Blog</a>
+    </div>
+
 </div>
 
 <footer>
-    <p>© 2026 Didabapev Tools. All rights reserved.</p>
-    <p><small>All
+    <p>© 2026 Web Tools Hub. All tools are free and private.</p>
+    <div style="margin-top: 10px;">
+        <a href="about.html" style="color: inherit; margin: 0 10px;">About</a>
+        <a href="privacy.html" style="color: inherit; margin: 0 10px;">Privacy</a>
+    </div>
+</footer>
+
+</body>
+</html>
