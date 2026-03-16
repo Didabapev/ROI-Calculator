@@ -1,45 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VAT Calculator – Add or Remove VAT Online</title>
-<meta name="description" content="Free VAT calculator. Add or remove VAT instantly with accurate results.">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free VAT Calculator – Add or Remove VAT Instantly 2026</title>
+    <meta name="description" content="Calculate VAT easily. Add or remove Value Added Tax from any amount with our free online tool. Accurate results for business and personal use.">
+    
+    <style>
+        :root {
+            --primary: #6d28d9; /* Violet */
+            --primary-hover: #5b21b6;
+            --bg: #f5f3ff;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #ddd6fe;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.8rem; color: #4c1d95; text-align: center; margin-bottom: 25px; }
+
+        .mode-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 12px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            background: transparent;
+            transition: 0.2s;
+        }
+
+        .mode-btn.active { background: var(--primary); color: white; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            display: none;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .res-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .res-total { border-top: 1px solid #ddd; pt: 10px; font-weight: 800; font-size: 1.3rem; color: var(--primary); }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>VAT Calculator</h1>
-</header>
+<div class="container">
+    <h1>VAT Calculator</h1>
 
-<div class="calculator">
-<label>Amount ($)</label>
-<input type="number" id="vatAmount">
+    <div class="mode-selector">
+        <button class="mode-btn active" onclick="setMode('add', this)">Add VAT</button>
+        <button class="mode-btn" onclick="setMode('remove', this)">Remove VAT</button>
+    </div>
 
-<label>VAT Rate (%)</label>
-<input type="number" id="vatRate">
+    <div class="input-group">
+        <label id="amountLabel">Amount (Net)</label>
+        <input type="number" id="amount" placeholder="e.g. 100">
+    </div>
 
-<button onclick="calculateVAT()">Calculate</button>
+    <div class="input-group">
+        <label>VAT Rate (%)</label>
+        <input type="number" id="rate" value="20">
+    </div>
 
-<h2 id="vatResult"></h2>
-</div>
-
-<script>
-function calculateVAT() {
-let amount = parseFloat(document.getElementById('vatAmount').value);
-let rate = parseFloat(document.getElementById('vatRate').value) / 100;
-
-if (!amount || !rate) {
-document.getElementById('vatResult').innerText = "Please enter valid numbers.";
-return;
-}
-
-let total = amount + (amount * rate);
-document.getElementById('vatResult').innerText = "Total with VAT: $" + total.toFixed(2);
-}
-</script>
-
-</body>
-</html>
-
+    <button class="btn" onclick
