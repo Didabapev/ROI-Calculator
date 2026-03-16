@@ -1,49 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Investment Calculator – Future Value Online</title>
-<meta name="description" content="Free investment calculator with compound interest. Calculate future value instantly.">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator – Forecast Your Future Wealth 2026</title>
+    <meta name="description" content="Calculate the future value of your investments with our free compound interest calculator. Plan your savings and wealth growth instantly.">
+    
+    <style>
+        :root {
+            --primary: #059669; /* Rich Green */
+            --primary-hover: #047857;
+            --bg: #f0fdf4;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #d1fae5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.8rem; color: #064e3b; text-align: center; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: #64748b; margin-bottom: 30px; font-size: 0.95rem; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1); }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+        .result-card {
+            margin-top: 30px;
+            display: none;
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .res-label { font-size: 1rem; color: #64748b; }
+        .res-value { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+
+        .info-section { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 25px; font-size: 0.9rem; color: #64748b; }
+        
+        footer { text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.85rem; }
+        footer a { color: var(--primary); text-decoration: none; }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>Investment Calculator</h1>
-</header>
+<div class="container">
+    <h1>Investment Calculator</h1>
+    <p class="subtitle">See how your money grows over time with compound interest.</p>
 
-<div class="calculator">
-<label>Initial Investment ($)</label>
-<input type="number" id="initial">
+    <div class="input-group">
+        <label>Initial Investment ($)</label>
+        <input type="number" id="initial" placeholder="e.g. 1000">
+    </div>
 
-<label>Annual Interest Rate (%)</label>
-<input type="number" id="rate">
+    <div class="input-group">
+        <label>Annual Interest Rate (%)</label>
+        <input type="number" id="rate" placeholder="e.g. 8" step="0.1">
+    </div>
 
-<label>Years</label>
-<input type="number" id="years">
+    <div class="input-group">
+        <label>Years</label>
+        <input type="number" id="years" placeholder="e.g. 10">
+    </div>
 
-<button onclick="calculateInvestment()">Calculate</button>
+    <button class="btn" onclick="calculateInvestment()">Calculate Future Value</button>
 
-<h2 id="investmentResult"></h2>
+    <div id="resultCard" class="result-card">
+        <div class="res-label">Your estimated future balance:</div>
+        <div class="res-value" id="resultValue">$0.00</div>
+        <div style="font-weight: 600; color: #059669;">Total wealth after growth</div>
+    </div>
+
+    <section class="info-section">
+        <h3>Power of Compound Interest</h3>
+        <p>Compound interest is the interest on a loan or deposit calculated based on both the initial principal and the accumulated interest from previous periods.</p>
+    </section>
 </div>
+
+<footer>
+    <p>© 2026 Web Tools Hub</p>
+    <a href="index.html">← Back to Main Hub</a>
+</footer>
 
 <script>
 function calculateInvestment() {
-let P = parseFloat(document.getElementById('initial').value);
-let r = parseFloat(document.getElementById('rate').value) / 100;
-let t = parseFloat(document.getElementById('years').value);
+    let P = parseFloat(document.getElementById('initial').value);
+    let r = parseFloat(document.getElementById('rate').value) / 100;
+    let t = parseFloat(document.getElementById('years').value);
 
-if (!P || !r || !t) {
-document.getElementById('investmentResult').innerText = "Please enter valid numbers.";
-return;
-}
-
-let future = P * Math.pow((1 + r), t);
-document.getElementById('investmentResult').innerText = "Future Value: $" + future.toFixed(2);
+    if (P > 0 && r > 0 && t > 0) {
+        let future = P * Math.pow((1 + r), t);
+        document.getElementById('resultValue').innerText = "$" + future.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('resultCard').style.display = 'block';
+    } else {
+        alert("Please enter valid numbers for all fields.");
+    }
 }
 </script>
-
 </body>
 </html>
-
