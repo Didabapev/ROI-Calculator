@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Unit Converter – Length, Weight, & Temperature Online 2026</title>
+    <meta name="description" content="Fast and accurate online unit converter. Convert between metric and imperial units for length, weight, and temperature instantly.">
+    
+    <style>
+        :root {
+            --primary: #6366f1; /* Indigo */
+            --primary-hover: #4f46e5;
+            --bg: #f5f3ff;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #ddd6fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.6rem; color: #4338ca; text-align: center; margin-bottom: 25px; }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            background: #eef2ff;
+            padding: 5px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .tab.active { background: var(--primary); color: white; }
+
+        .converter-body { display: flex; flex-direction: column; gap: 15px; }
+
+        label { font-size: 0.85rem; font-weight: 600; color: #64748b; }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .swap-icon { text-align: center; font-size: 1.5rem; margin: 5px 0; color: var(--primary); }
+
+        .seo-info { margin-top: 40px; font-size: 0.85rem; color: #64748b; border-top: 1px solid var(--border); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit Converter</h1>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="setMode('length', this)">Length</div>
+        <div class="tab" onclick="setMode('weight', this)">Weight</div>
+        <div class="tab" onclick="setMode('temp', this)">Temp</div>
+    </div>
+
+    <div class="converter-body">
+        <div>
+            <label>From</label>
+            <input type="number" id="inputVal" placeholder="0" oninput="convert()">
+            <select id="fromUnit" onchange="convert()"></select>
+        </div>
+
+        <div class="swap-icon">⇅</div>
+
+        <div>
+            <label>To</label>
+            <input type="number" id="outputVal" readonly placeholder="0">
+            <select id="toUnit" onchange="convert()"></select>
+        </div>
+    </div>
+
+    <div class="seo-info">
+        <p><strong>Quick & Accurate:</strong> Convert between Metric (meters, kilograms, Celsius) and Imperial (inches, pounds, Fahrenheit) systems easily.</p>
+    </div>
+</div>
+
+<script>
+    const units = {
+        length: { "Meters": 1, "Kilometers": 0.001, "Centimeters": 100, "Inches": 39.37, "Feet": 3.28, "Miles": 0.000621 },
+        weight: { "Kilograms": 1, "Grams": 1000, "Pounds": 2.204, "Ounces": 35.27 },
+        temp: { "Celsius": "C", "Fahrenheit": "F", "Kelvin": "K" }
+    };
+
+    let currentMode = 'length';
+
+    function setMode(mode, el) {
+        currentMode = mode;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+        populateUnits();
+    }
+
+    function populateUnits() {
+        const from = document.getElementById('fromUnit');
+        const to = document.getElementById('toUnit');
+        from.innerHTML = ''; to.innerHTML = '';
+        
+        Object.keys(units[currentMode]).forEach(unit => {
+            from.innerHTML += `<option value="${unit}">${unit}</option>`;
+            to.innerHTML += `<option value="${unit}">${unit}</option>`;
+        });
+        convert();
+    }
+
+    function convert() {
+        const val = parseFloat(document.getElementById('inputVal').value);
+        const from = document.getElementById('fromUnit').value;
+        const to = document.getElementById('toUnit').value;
+        if (isNaN(val)) return;
+
+        let result;
+        if (currentMode === 'temp') {
+            result = convertTemp(val, from, to);
+        } else {
+            const base = val / units[currentMode][from];
+            result = base * units[currentMode][to];
+        }
+        document.getElementById('outputVal').value = result.toFixed(4);
+    }
+
+    function convertTemp(v, f, t) {
+        let c;
+        if (f === "Celsius") c = v;
+        else if (f === "Fahrenheit") c = (v - 32) * 5/9;
+        else c = v - 273.15;
+
+        if (t === "Celsius") return c;
+        if (t === "Fahrenheit") return (c * 9/5) + 32;
+        return c + 273.15;
+    }
+
+    populateUnits();
+</script>
+</body>
+</html>
