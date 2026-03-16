@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url><loc>https://didabapev.github.io/</loc></url>
-<url><loc>https://didabapev.github.io/roi-calculator.html</loc></url>
-<url><loc>https://didabapev.github.io/profit-calculator.html</loc></url>
-<url><loc>https://didabapev.github.io/break-even-calculator.html</loc></url>
-<url><loc>https://didabapev.github.io/loan-calculator.html</loc></url>
-<url><loc>https://didabapev.github.io/investment-calculator.html</loc></url>
-<url><loc>https://didabapev.github.io/vat-calculator.html</loc></url>
-
+   <url><loc>https://didabapev.github.io/</loc></url>
+   <url><loc>https://didabapev.github.io/invoice-generator/</loc></url>
+   <url><loc>https://didabapev.github.io/bmi-calculator/</loc></url>
+   <url><loc>https://didabapev.github.io/Free-online-password-generator-and-PDF-generator/</loc></url>
+   <url><loc>https://didabapev.github.io/resume-builder/</loc></url>
+   <url><loc>https://didabapev.github.io/loan-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/break-even-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/qr-generator.html</loc></url>
+   <url><loc>https://didabapev.github.io/calorie-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/unit-converter.html</loc></url>
+   <url><loc>https://didabapev.github.io/word-counter.html</loc></url>
+   <url><loc>https://didabapev.github.io/tip-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/profit-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/roi-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/vat-calculator.html</loc></url>
+   <url><loc>https://didabapev.github.io/investment-calculator.html</loc></url>
 </urlset>
-
