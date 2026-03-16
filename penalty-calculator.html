@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penalty (Peni) Calculator – Late Payment Interest Tool 2026</title>
+    <meta name="description" content="Calculate late payment penalties and interest easily. Professional tool for business and personal debt analysis.">
+    
+    <style>
+        :root {
+            --primary: #f97316; /* Orange */
+            --primary-hover: #ea580c;
+            --bg: #fff7ed;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #fed7aa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.8rem; color: #9a3412; text-align: center; margin-bottom: 25px; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--primary-hover); }
+
+        .result-box {
+            margin-top: 30px;
+            display: none;
+            background: #fffcf0;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .res-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem; }
+        .res-total { font-weight: 800; color: var(--primary); font-size: 1.6rem; border-top: 1px solid #ffedd5; padding-top: 12px; margin-top: 12px; }
+
+        footer { text-align: center; margin-top: 40px; color: #9a3412; font-size: 0.85rem; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Penalty Calculator</h1>
+    
+    <div class="input-group">
+        <label>Debt Amount ($)</label>
+        <input type="number" id="debt" placeholder="e.g. 5000">
+    </div>
+
+    <div class="input-group">
+        <label>Days of Delay</label>
+        <input type="number" id="days" placeholder="e.g. 30">
+    </div>
+
+    <div class="input-group">
+        <label>Annual Interest Rate (%)</label>
+        <input type="number" id="rate" placeholder="e.g. 10" step="0.1">
+    </div>
+
+    <button class="btn" onclick="calculatePenalty()">Calculate Penalty</button>
+
+    <div id="resultBox" class="result-box">
+        <div class="res-row"><span>Daily Penalty:</span> <span id="dailyRes">$0.00</span></div>
+        <div class="res-row"><span>Total Penalty:</span> <span id="penaltyRes">$0.00</span></div>
+        <div class="res-row res-total"><span>Total Due:</span> <span id="totalRes">$0.00</span></div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Web Tools Hub | <a href="index.html" style="color:inherit;">Main Hub</a></p>
+</footer>
+
+<script>
+    function calculatePenalty() {
+        const debt = parseFloat(document.getElementById('debt').value);
+        const days = parseInt(document.getElementById('days').value);
+        const annualRate = parseFloat(document.getElementById('rate').value);
+
+        if (debt > 0 && days > 0 && annualRate >= 0) {
+            const dailyRate = (annualRate / 100) / 365;
+            const penalty = debt * dailyRate * days;
+            const total = debt + penalty;
+
+            document.getElementById('dailyRes').innerText = '$' + (debt * dailyRate).toFixed(2);
+            document.getElementById('penaltyRes').innerText = '$' + penalty.toFixed(2);
+            document.getElementById('totalRes').innerText = '$' + total.toFixed(2);
+            document.getElementById('resultBox').style.display = 'block';
+        } else {
+            alert("Please enter valid numbers for debt, days, and rate.");
+        }
+    }
+</script>
+</body>
+</html>
