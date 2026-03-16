@@ -1,85 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROI Calculator – Calculate Return on Investment Online</title>
-<meta name="description" content="Free ROI Calculator. Calculate return on investment instantly for business, marketing, and real estate. Simple and accurate.">
-<meta name="keywords" content="ROI calculator, return on investment calculator, business ROI tool">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator – Calculate Return on Investment Online 2026</title>
+    <meta name="description" content="Free ROI Calculator. Calculate return on investment instantly for business, marketing, and real estate. Simple, fast and accurate results.">
+    
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "WebApplication",
+     "name": "ROI Calculator",
+     "applicationCategory": "FinanceApplication",
+     "operatingSystem": "All"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #6366f1; /* Indigo */
+            --primary-hover: #4f46e5;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
 
-<!-- Open Graph -->
-<meta property="og:title" content="ROI Calculator">
-<meta property="og:description" content="Free online ROI calculator for businesses and investors.">
-<meta property="og:type" content="website">
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "WebApplication",
- "name": "ROI Calculator",
- "applicationCategory": "FinanceApplication"
-}
-</script>
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 1.8rem; color: #1e1b4b; text-align: center; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: #64748b; margin-bottom: 30px; font-size: 0.95rem; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+        .result-card {
+            margin-top: 30px;
+            display: none;
+            background: #eef2ff;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #c7d2fe;
+            text-align: center;
+        }
+        .res-label { font-size: 1rem; color: #4338ca; }
+        .res-value { font-size: 2.8rem; font-weight: 900; color: var(--primary); margin: 10px 0; }
+
+        .seo-content { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; }
+        .seo-content h2 { font-size: 1.3rem; color: #1e1b4b; }
+        .seo-content p { color: #64748b; font-size: 0.95rem; }
+
+        footer { text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.85rem; }
+        footer a { color: var(--primary); text-decoration: none; }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>ROI Calculator</h1>
-<p>Calculate your Return on Investment instantly</p>
-</header>
+<div class="container">
+    <h1>ROI Calculator</h1>
+    <p class="subtitle">Evaluate the efficiency and profitability of your investment.</p>
 
-<div class="calculator">
-<label>Investment Amount ($)</label>
-<input type="number" id="investment">
+    <div class="input-group">
+        <label>Investment Amount ($)</label>
+        <input type="number" id="investment" placeholder="e.g. 1000">
+    </div>
 
-<label>Return Amount ($)</label>
-<input type="number" id="return">
+    <div class="input-group">
+        <label>Total Return Amount ($)</label>
+        <input type="number" id="return" placeholder="e.g. 1500">
+    </div>
 
-<button onclick="calculateROI()">Calculate ROI</button>
+    <button class="btn" onclick="calculateROI()">Calculate ROI</button>
 
-<h2 id="roiResult"></h2>
-</div>
+    <div id="resultCard" class="result-card">
+        <div class="res-label">Your Return on Investment:</div>
+        <div class="res-value" id="roiValue">0.00%</div>
+        <div id="roiFeedback" style="font-weight: 600;">Efficiency of your capital</div>
+    </div>
 
-<script>
-function calculateROI() {
-let investment = parseFloat(document.getElementById('investment').value);
-let returnAmount = parseFloat(document.getElementById('return').value);
-
-if (!investment || !returnAmount) {
-document.getElementById('roiResult').innerText = "Please enter valid numbers.";
-return;
-}
-
-let roi = ((returnAmount - investment) / investment) * 100;
-document.getElementById('roiResult').innerText = "ROI: " + roi.toFixed(2) + "%";
-}
-</script>
-<section class="seo-text">
-  <h2>What Is ROI?</h2>
-  <p>
-    ROI (Return on Investment) is a key financial metric used to evaluate the profitability
-    of an investment. It helps businesses and investors understand how effectively their
-    money is working.
-  </p>
-
-  <h2>How to Use the ROI Calculator</h2>
-  <p>
-    Enter your initial investment and total return to instantly calculate ROI.
-    This free ROI calculator is perfect for startups, marketing campaigns,
-    real estate investments, and financial planning.
-  </p>
-
-  <h2>Why Use Our ROI Calculator?</h2>
-  <ul>
-    <li>100% free online ROI calculator</li>
-    <li>Fast and accurate results</li>
-    <li>No registration required</li>
-    <li>SEO optimized for business analysis</li>
-  </ul>
-</section>
-
-</body>
-</html>
-
+    <section class="seo-content">
+        <h2>What is ROI?</h2>
+        <p>ROI (Return on Investment) is a financial ratio used to calculate the benefit an investor will receive in relation to their investment cost. It is a key metric for startups, marketing, and real estate.</p>
+        <h2>How to calculate ROI?</h2>
+        <p>The formula is: <strong>((Net Profit) / Cost of Investment) x 100</strong>. Our tool automates this for you instantly.</p>
