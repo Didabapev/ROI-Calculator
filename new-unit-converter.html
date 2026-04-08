@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter Online | Length, Weight, Temp 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root { --bg-dark: #0f172a; --card-dark: #1e293b; --accent: #8b5cf6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: white; padding: 0; }
+        nav { padding: 20px; text-align: center; background: var(--card-dark); }
+        .container { max-width: 600px; margin: 50px auto; padding: 20px; background: var(--card-dark); border-radius: 12px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 6px; }
+        .result { font-size: 24px; color: var(--accent); text-align: center; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" style="color: white; text-decoration: none;">Home</a> | 
+    <a href="unit-converter.html" style="color: var(--accent); text-decoration: none;">Unit Converter</a>
+</nav>
+
+<div class="container">
+    <h1>Unit Converter</h1>
+    <label>From: Meters to Feet</label>
+    <input type="number" id="inputValue" placeholder="Enter value..." oninput="convert()">
+    <div class="result" id="outputValue">0.00 Feet</div>
+    
+    <div style="margin-top: 40px; font-size: 14px; color: #94a3b8;">
+        <h2>Fast & Accurate Conversion</h2>
+        <p>Convert common units instantly. Our 2026 unit converter is optimized for fast performance on mobile and desktop.</p>
+    </div>
+</div>
+
+<script>
+    function convert() {
+        const val = document.getElementById('inputValue').value;
+        const out = document.getElementById('outputValue');
+        if(val) {
+            const result = val * 3.28084;
+            out.innerText = result.toFixed(2) + " Feet";
+        } else {
+            out.innerText = "0.00 Feet";
+        }
+    }
+</script>
+
+</body>
+</html>
