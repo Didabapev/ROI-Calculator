@@ -3,165 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Salary Calculator – Net Pay & Tax Estimator 2026</title>
-    <meta name="description" content="Calculate your take-home pay after taxes. Simple and fast salary calculator for monthly and annual income analysis.">
+    <title>Salary Calculator 2026 | Net Take-Home Pay Estimator</title>
+    <meta name="description" content="Calculate your net income after taxes and deductions. Free, private, and updated for 2026 tax standards.">
     
+    <link rel="stylesheet" href="style.css">
     <style>
         :root {
-            --primary: #1e40af; /* Deep Blue */
-            --primary-hover: #1e3a8a;
-            --bg: #f1f5f9;
-            --card: #ffffff;
-            --text: #0f172a;
-            --border: #cbd5e1;
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --accent-green: #10b981;
+            --text-gray: #94a3b8;
         }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-dark);
+            color: white;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
-
-        .container {
-            max-width: 550px;
-            margin: 40px auto;
-            background: var(--card);
-            padding: 40px;
-            border-radius: 24px;
+        nav {
+            padding: 20px;
+            text-align: center;
+            background: var(--card-dark);
+            border-bottom: 1px solid #334155;
+        }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        
+        .calc-card {
+            background: var(--card-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #334155;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-
-        h1 { font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 25px; }
-
         .input-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-        
-        input {
+        label { display: block; margin-bottom: 8px; color: var(--text-gray); }
+        input, select {
             width: 100%;
-            padding: 14px;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            box-sizing: border-box;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            background: var(--primary);
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid #475569;
+            border-radius: 6px;
             color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: 0.2s;
-            margin-top: 10px;
+            font-size: 16px;
         }
-
         .result-box {
             margin-top: 30px;
-            display: none;
-            background: #f8fafc;
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
+            padding: 20px;
+            background: #064e3b;
+            border-radius: 8px;
+            text-align: center;
         }
-
-        .res-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem; }
-        .res-total { font-weight: 800; color: #059669; font-size: 1.5rem; border-top: 1px solid #e2e8f0; padding-top: 12px; margin-top: 12px; }
-
-        footer { text-align: center; margin-top: 40px; color: #64748b; font-size: 0.85rem; }
+        .result-val { font-size: 32px; font-weight: bold; color: var(--accent-green); }
+        
+        .seo-text { margin-top: 50px; color: var(--text-gray); line-height: 1.8; }
+        .seo-text h2 { color: white; }
     </style>
 </head>
 <body>
 
+<nav>
+    <a href="index.html">Home</a>
+    <a href="json-formatter.html">JSON Formatter</a>
+    <a href="salary-calculator.html" style="color: var(--accent-green);">Salary Calc</a>
+</nav>
+
 <div class="container">
-    <h1>Salary Calculator</h1>
-    
-    <div class="input-group">
-        <label>Gross Salary (Before Tax)</label>
-        <input type="number" id="grossSalary" placeholder="e.g. 5000">
+    <div class="calc-card">
+        <h1>Salary Calculator</h1>
+        <p style="color: var(--text-gray);">Estimate your net monthly income.</p>
+        
+        <div class="input-group">
+            <label>Annual Gross Salary ($)</label>
+            <input type="number" id="grossSalary" placeholder="e.g. 80000" oninput="calculateSalary()">
+        </div>
+        
+        <div class="input-group">
+            <label>Tax Rate (%) - Estimated for 2026</label>
+            <input type="number" id="taxRate" value="25" oninput="calculateSalary()">
+        </div>
+
+        <div class="result-box">
+            <div>Monthly Take-Home Pay:</div>
+            <div class="result-val" id="monthlyNet">$0.00</div>
+        </div>
     </div>
 
-    <div class="input-group">
-        <label>Tax Rate (%)</label>
-        <input type="number" id="taxRate" value="13" placeholder="13">
-    </div>
-
-    <button class="btn" onclick="calculateSalary()">Calculate Take-Home Pay</button>
-
-    <div id="resultBox" class="result-box">
-        <div class="res-row"><span>Gross Income:</span> <span id="grossRes">$0.00</span></div>
-        <div class="res-row"><span>Tax Amount:</span> <span id="taxRes">$0.00</span></div>
-        <div class="res-row res-total"><span>Net Salary (Take-Home):</span> <span id="netRes">$0.00</span></div>
+    <div class="seo-text">
+        <h2>Understanding Your Take-Home Pay in 2026</h2>
+        <p>
+            When negotiating a job offer, the "Gross Salary" is often the only number discussed. However, what truly matters for your lifestyle is your <strong>Net Income</strong>. Our <strong>Salary Calculator 2026</strong> helps you bridge that gap by estimating your actual take-home pay after federal and local deductions.
+        </p>
+        
+        <h3>Why use an online salary estimator?</h3>
+        <p>
+            Tax laws evolve, and 2026 has brought new adjustments to social security contributions and income brackets. Whether you are using our <strong>Resume Builder</strong> to land a new role or simply planning your budget, knowing your precise monthly cash flow is essential.
+        </p>
+        
+        <ul>
+            <li><strong>Financial Planning:</strong> Accurate net pay estimates allow for better mortgage and savings planning.</li>
+            <li><strong>Negotiation Power:</strong> Knowing the net impact of a $5,000 raise helps you negotiate more effectively.</li>
+            <li><strong>Privacy:</strong> Just like our <strong>JSON Formatter</strong>, this tool runs entirely in your browser. No financial data is stored.</li>
+        </ul>
     </div>
 </div>
-<section style="max-width: 800px; margin: 50px auto; padding: 35px; line-height: 1.8; color: #334155; background: #ffffff; border-radius: 20px; border: 1px dotted #cbd5e1;">
-    <h2 style="color: #1e40af; font-size: 1.8rem; border-left: 4px solid #1e40af; padding-left: 15px;">Understanding Your Take-Home Pay: A Guide to Salary Planning in 2026</h2>
-    <p>
-        In today's fast-paced economy, knowing your <strong>gross salary</strong> is only half the story. To truly manage your household budget or evaluate a new job offer, you must understand your <strong>net income</strong>—the actual amount that hits your bank account after all deductions. Our <strong>online salary calculator</strong> provides an instant, transparent look at your financial reality.
-    </p>
-
-    <h3 style="color: #1e3a8a; margin-top: 30px;">Gross vs. Net Salary: What Is the Difference?</h3>
-    <p>
-        <strong>Gross Income</strong> is the total amount of money your employer pays you before any taxes or mandatory contributions are taken out. 
-        <strong>Net Pay</strong> (also known as take-home pay) is what remains after your local, state, or federal government takes its share. Depending on your location, these deductions can include:
-    </p>
-    <ul style="padding-left: 20px; list-style-type: square;">
-        <li style="margin-bottom: 8px;"><strong>Income Tax:</strong> The primary tax levied on your earnings.</li>
-        <li style="margin-bottom: 8px;"><strong>Social Security & Pension:</strong> Mandatory contributions for future retirement.</li>
-        <li style="margin-bottom: 8px;"><strong>Health Insurance:</strong> Deductions for public or private medical coverage.</li>
-    </ul>
-
-    <div style="background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; margin: 30px 0;">
-        <h4 style="margin-top: 0; color: #1e40af;">The 50/30/20 Budgeting Rule</h4>
-        <p style="margin-bottom: 0;">
-            Once you calculate your <strong>monthly net salary</strong>, experts recommend the 50/30/20 rule: Allocate 50% of your income to <em>Needs</em> (rent, groceries), 30% to <em>Wants</em> (entertainment, hobbies), and 20% to <em>Savings or Debt Repayment</em>. Use our tool to find your exact numbers today.
-        </p>
-    </div>
-
-    <h3 style="color: #1e3a8a; margin-top: 30px;">Why Use a Universal Salary Estimator?</h3>
-    <p>
-        Our <strong>private payroll calculator</strong> is built for the global workforce. Whether you are a remote freelancer or an office employee, you can manually adjust the <strong>tax rate percentage</strong> to match your specific tax bracket. This flexibility makes it an essential tool for:
-    </p>
-    <ol style="padding-left: 20px;">
-        <li style="margin-bottom: 12px;"><strong>Job Seekers:</strong> Compare multiple offers by looking at the real "after-tax" value.</li>
-        <li style="margin-bottom: 12px;"><strong>Contractors:</strong> Estimate how much you should set aside for quarterly tax payments.</li>
-        <li style="margin-bottom: 12px;"><strong>Budgeters:</strong> Build a realistic savings plan based on actual liquid cash.</li>
-    </ol>
-
-    <h3 style="color: #1e3a8a; margin-top: 30px;">Maximize Your Earnings</h3>
-    <p>
-        Remember, your salary is just one piece of the puzzle. To gain a full 360-degree view of your professional worth, consider using our other <strong>career and finance utilities</strong>. If you are preparing a job application, our <a href="resume-builder/" style="color: #1e40af; font-weight: 600;">Resume Builder</a> can help you stand out, while our <a href="investment-calculator.html" style="color: #1e40af; font-weight: 600;">Investment Calculator</a> shows you how to grow your net savings over time.
-    </p>
-    <p style="font-size: 0.9rem; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
-        <em>Data Privacy Note: Our calculator runs entirely on your device. Your income data is never stored, tracked, or shared with third parties.</em>
-    </p>
-</section>
-<footer>
-    <p>© 2026 Web Tools Hub | <a href="index.html" style="color:var(--primary); text-decoration:none;">Back to Hub</a></p>
-</footer>
 
 <script>
     function calculateSalary() {
-        const gross = parseFloat(document.getElementById('grossSalary').value);
-        const rate = parseFloat(document.getElementById('taxRate').value);
-
-        if (gross > 0 && rate >= 0) {
-            const taxAmount = gross * (rate / 100);
-            const netSalary = gross - taxAmount;
-
-            document.getElementById('grossRes').innerText = '$' + gross.toLocaleString();
-            document.getElementById('taxRes').innerText = '$' + taxAmount.toLocaleString();
-            document.getElementById('netRes').innerText = '$' + netSalary.toLocaleString();
-            document.getElementById('resultBox').style.display = 'block';
+        const gross = document.getElementById('grossSalary').value;
+        const tax = document.getElementById('taxRate').value;
+        const resultDisplay = document.getElementById('monthlyNet');
+        
+        if (gross > 0) {
+            const annualNet = gross * (1 - (tax / 100));
+            const monthlyNet = annualNet / 12;
+            resultDisplay.innerText = '$' + monthlyNet.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         } else {
-            alert("Please enter valid numbers.");
+            resultDisplay.innerText = '$0.00';
         }
     }
 </script>
+
 </body>
 </html>
