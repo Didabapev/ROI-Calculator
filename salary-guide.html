@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator: Gross to Net Pay Guide 2026</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background: #fdfdfd; }
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .category { color: #007bff; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+        h1 { font-size: 2.5rem; margin-top: 10px; color: #1a1a1a; }
+        .tool-container { background: #ffffff; border: 1px solid #e1e1e1; border-radius: 12px; padding: 30px; margin: 40px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        input { width: 100%; padding: 12px; margin: 10px 0 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #28a745; color: white; border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #218838; }
+        .result-box { margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 5px solid #28a745; display: none; }
+        .content { font-size: 1.1rem; color: #444; }
+        .content h2 { color: #1a1a1a; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="post-header">
+    <span class="category">Finance & Career</span>
+    <h1>How to Calculate Your Net Income: A Complete Guide</h1>
+</div>
+
+<div class="content">
+    <p>In today’s fast-paced economy, understanding your true take-home pay is more critical than ever. Whether you are negotiating a new job offer or planning your monthly budget, knowing your <strong>net income</strong> is the key to financial stability.</p>
+    
+    <!-- ВСТАВКА КАЛЬКУЛЯТОРА ВНУТРЬ СТАТЬИ -->
+    <div class="tool-container">
+        <h2 style="margin-top:0; text-align:center;">Interactive Salary Estimator</h2>
+        <label>Annual Gross Salary ($)</label>
+        <input type="number" id="grossInput" placeholder="Enter amount, e.g. 60000">
+        
+        <label>Estimated Tax Rate (%)</label>
+        <input type="number" id="taxInput" value="20">
+        
+        <button onclick="calc()">Calculate My Take-Home Pay</button>
+        
+        <div id="res" class="result-box">
+            <p><strong>Monthly Net:</strong> <span id="mNet"></span></p>
+            <p><strong>Annual Net:</strong> <span id="aNet"></span></p>
+        </div>
+    </div>
+
+    <h2>Why Use a Take-Home Pay Calculator?</h2>
+    <p>Calculating taxes and insurance manually is complex. Using a <strong>gross to net calculator</strong> or a <strong>paycheck estimator</strong> ensures you won't have surprises on payday. This <strong>salary breakdown tool</strong> helps you plan for the future with precision.</p>
+    
+    <p>If you've asked "How much is my paycheck after taxes?", our tool provides an immediate <strong>income tax breakdown</strong> based on your estimated rates.</p>
+</div>
+
+<script>
+function calc() {
+    const g = document.getElementById('grossInput').value;
+    const t = document.getElementById('taxInput').value;
+    if(g > 0) {
+        const netA = g * (1 - t/100);
+        document.getElementById('aNet').innerText = '$' + netA.toLocaleString();
+        document.getElementById('mNet').innerText = '$' + (netA/12).toLocaleString();
+        document.getElementById('res').style.display = 'block';
+    }
+}
+</script>
+
+</body>
+</html>
